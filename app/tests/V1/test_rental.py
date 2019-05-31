@@ -39,6 +39,13 @@ class TestRentalApp(unittest.TestCase):
         path = '/api/v1/book/1'
         response = self.client.get(path, content_type='application/json')
         self.assertEqual(response.status_code, 200)
+    
+    def test_deleting_a_rental(self):
+        post = self.client.post(path='/api/v1/book', data=json.dumps(self.data), content_type='application/json')
+        int_id = int(post.json['blog_id'])
+        path = '/api/v1/blog/{}'.format(int_id)
+        response = self.client.delete(path, content_type='application/json')
+        self.assertEqual(response.status_code, 200)
 
 
 if __name__ == '__main__':
