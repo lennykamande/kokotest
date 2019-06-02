@@ -12,7 +12,8 @@ class TestRentalApp(unittest.TestCase):
         self.data = {
               "title": "Religion is all about faith",
               "description": "UPDATED: Some serious and useful content here",
-              "days":"3"
+              "days": 3,
+              "books" : 2
         }
         
     def post(self, path='/book', data={}):
@@ -25,25 +26,23 @@ class TestRentalApp(unittest.TestCase):
     def test_renting_a_book(self):
         resp = self.post()
         self.assertEqual(resp.status_code, 201)
-        self.assertTrue(resp.json['book_id'])
-        self.assertEqual(resp.json['total'], '9')
-
+        self.assertTrue(resp.json['rental_id'], 1)
+        
     def test_getting_all_rentals(self):
         resp = self.client.get(path='/api/v1/book', content_type='application/json')
         self.assertEqual(resp.status_code, 200)
-        self.assertEqual(resp.json['total'], '9')
 
     def test_getting_a_single_rental(self):
         post = self.post()
-        int_id = int(post.json['book_id'])
+        int_id = int(post.json['rental_id'])
         path = '/api/v1/book/1'
         response = self.client.get(path, content_type='application/json')
         self.assertEqual(response.status_code, 200)
     
     def test_deleting_a_rental(self):
         post = self.client.post(path='/api/v1/book', data=json.dumps(self.data), content_type='application/json')
-        int_id = int(post.json['book_id'])
-        path = '/api/v1/blog/{}'.format(int_id)
+        int_id = int(post.json['rental_id'])
+        path = '/api/v1/book/{}'.format(int_id)
         response = self.client.delete(path, content_type='application/json')
         self.assertEqual(response.status_code, 200)
 
