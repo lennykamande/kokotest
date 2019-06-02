@@ -7,7 +7,7 @@ class TestRentalApp(unittest.TestCase):
     """docstring for TestRentalApp"""
 
     def setUp(self):
-        self.app = create_app()
+        self.app = create_app(config_name="testing")
         self.client = self.app.test_client()
         self.data = {
               "title": "Religion is all about faith",
@@ -42,7 +42,7 @@ class TestRentalApp(unittest.TestCase):
     
     def test_deleting_a_rental(self):
         post = self.client.post(path='/api/v1/book', data=json.dumps(self.data), content_type='application/json')
-        int_id = int(post.json['blog_id'])
+        int_id = int(post.json['book_id'])
         path = '/api/v1/blog/{}'.format(int_id)
         response = self.client.delete(path, content_type='application/json')
         self.assertEqual(response.status_code, 200)
