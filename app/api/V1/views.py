@@ -42,9 +42,10 @@ class SingleBooking(Resource):
         """retrieving a single booking based on id"""
         for rental in rental_list:
             if rental['id'] == id:
+                my_rental = rental
                 return make_response(jsonify({
                     "msg": "ok",
-                    "rental": rental
+                    "rental": my_rental
                 }), 200)
 
             return make_response(jsonify({
