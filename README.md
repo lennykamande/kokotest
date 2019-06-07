@@ -32,8 +32,8 @@ On the terminal type `export FLASK_APP=run.py` and type enter. Run `flask run`
 | POST /api/v1/book                       | Request a booking                              |
 | GET /api/v1/book                        | Retrieve all bookings                          | 
 | GET /api/v1/book/<int:id>               | Retrieve a specific booking                    |
-|PUT /api/v1/book/<int:id>/cancel	      | Cancel a specific booking                      |
-|GET /api/v1/users/<int:id>/parcels       | Retrieve a specific user's bookings            |
+| PUT /api/v1/book/<int:id>/cancel	      | Cancel a specific booking                      |
+| GET /api/v1/users/<int:id>/book         | Retrieve a specific user's bookings            |
 
 
 ## Application Features
@@ -47,13 +47,12 @@ On the terminal type `export FLASK_APP=run.py` and type enter. Run `flask run`
 
 ### Sample Data for testing the endpoints
 
-#### Parcel Data
+#### Booking Data
             
-        "book_name" 	 : "Song of ice and fire",
-        "booking_days"   : "2 days",
-        "book_name"      : "Mayor of casterbridge",
-        "booking_days" 	 : "3 days",
-        "user_id"        :     1   
+        "title" 	     : "Song of ice and fire",
+        "description" 	 : "Story based on the hit series game of thrones",
+        "booking_days"   :  2 ,
+        "books"          :  1   
 
 #### User Data
             
