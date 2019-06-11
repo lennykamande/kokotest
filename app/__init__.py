@@ -1,5 +1,5 @@
 # api/__init__.py
-
+import flask
 from flask_api import FlaskAPI
 
 # local import
@@ -18,5 +18,8 @@ def create_app(config_name):
 
     from .api.V2 import version2 as v2
     app.register_blueprint(v2)
+
+    from .api.V3 import version3 as v3
+    app.register_blueprint(v3)
     
     return app
