@@ -33,7 +33,7 @@ jobs:
       - run:
           name: install dependencies
           command: |
-            python3 -m env env
+            python3 -m venv venv
             . env/bin/activate
             pip install -Requirements.txt
 
