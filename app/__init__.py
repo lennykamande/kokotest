@@ -1,5 +1,5 @@
 # api/__init__.py
-
+import flask
 from flask_api import FlaskAPI
 
 # local import
