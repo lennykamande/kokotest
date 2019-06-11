@@ -51,4 +51,4 @@ jobs:
           name: run tests
           command: |
             . venv/bin/activate
-            pytest
+            python manage.py test
