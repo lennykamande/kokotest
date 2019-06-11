@@ -34,7 +34,7 @@ jobs:
           name: install dependencies
           command: |
             python3 -m venv venv
-            . env/bin/activate
+            . venv/bin/activate
             pip install -Requirements.txt
 
       - save_cache:
